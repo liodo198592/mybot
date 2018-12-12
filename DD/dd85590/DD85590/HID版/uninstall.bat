@@ -1,0 +1,3 @@
+dc64 remove "HID\DDHID180910*"
+dc64 remove "DDHID180910\HID_DEVICE"
+pause

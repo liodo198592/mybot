@@ -1,0 +1,14 @@
+安装版：
+	DD32.dll
+	DD64.dll
+	
+免安装版：
+	DD85590.32.dll
+	DD85590.64.dll
+	
+HID版：
+	DDHID32.dll
+	DDHID64.dll
+	
+32位程序调用 *.32.dll
+64位程序调用 *.64.dll
