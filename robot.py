@@ -991,6 +991,30 @@ def getactionlist(finishbaotu, finishyabiao, finishmijing, finishsanjie, finishk
 
 def checkbag():
 
+
+    #买道具
+    res = checkimg(357 * 2, 44 * 2, 412 * 2, 75 * 2, "res2//paihang.png", False, 0)
+    if res is True:
+        #点击摆摊
+        clickA(62*2,220*2)
+        time.sleep(1)
+        clickA(983*2,283*2)
+        time.sleep(1)
+        clickA(386*2,205*2)
+        time.sleep(1)
+        while True:
+            target = [u'没', u'有',u'可', u'以']
+            res2 = checkitem(331*2, 424*2, 541*2, 456*2, target, 9,0)
+            if res2 is False:
+                clickB(152*2,289*2)
+                time.sleep(1)
+                clickB(824*2,688*2)
+            else:
+                break
+        cancelDialog(926*2,151*2)
+
+
+    #挖宝
     while True:
         print("check baoguo")
         res = checkimg(965 * 2, 648 * 2, 1015 * 2, 683 * 2, "res2//baoguo.png", False, 0)
@@ -1001,6 +1025,7 @@ def checkbag():
             break
         checkdialog()
         time.sleep(1)
+
 
     for row in range(1, 6):
         for col in range(1, 6):
@@ -1113,7 +1138,8 @@ def doone(finishbaotu,finishyabiao,finishmijing,finishsanjie,finishkeju,finishba
 
 if __name__ == '__main__':
     #热闹 轩岚  粉 软 果
-    checktabforUser(u"热闹")
+    # checktabforUser(u"热闹")
+    checkbag()
 #doone()
 '''
 #sys.stdout = mylog.Logger("mylog.txt")

@@ -122,7 +122,7 @@ class MainWindow:
         self.root.after(100, self.listen_for_result)
 
     def startaction11(self):
-        self.nowtask = 1
+        self.nowtask = 3
         self.B11.config(state=tk.DISABLED)
         print("单人任务" + str(self.finishbaotu.get()) + str(self.finishyabiao.get()) +
               str(self.finishmijing.get()) + str(self.finishsanjie.get()) + str(self.finishkeju.get())
@@ -171,6 +171,10 @@ class MainWindow:
         if self.nowtask == 2:
             stop_thread(self.new_thread)
             self.B2.config(state=tk.NORMAL)
+            self.nowtask = 0
+        if self.nowtask == 3:
+            stop_thread(self.new_thread)
+            self.B11.config(state=tk.NORMAL)
             self.nowtask = 0
 
 
