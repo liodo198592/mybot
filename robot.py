@@ -48,10 +48,26 @@ def checkdialog():
             print("checkdialog 取消")
 
         target = [u'福', u'利']
-        res = checkitem(462*2, 144*2, 575*2, 172*2, target, 1)
+        res = checkitem(462*2, 144*2, 575*2, 172*2, target, 1,0)
         if res is True:
-            clickB(909*2, 163*2)
+            cancelDialog(909*2, 163*2)
             time.sleep(1)
+        
+
+        #请组逞或加入队伍
+        target = [u'请', u'组', u'建',u'或', u'加',u'入', u'队', u'伍']
+        res = checkitem(827*2, 319*2, 1007*2, 351*2, target, 9,0)
+        if res is True:
+            cancelDialog(863*2, 158*2)
+            time.sleep(1)
+
+
+        target = [u'队', u'伍', u'沼',u'任', u'务']
+        res = checkitem(441*2, 113*2, 556*2, 142*2, target, 9,0)
+        if res is True:
+            cancelDialog(924*2, 134*2)
+            time.sleep(1)
+
 
         #check shanggushenfu
         target = [u'激活', u'护符']
@@ -67,11 +83,6 @@ def checkdialog():
             cnt = 0
 
     return
-
-
-
-
-
 
 
 def clearmap():
@@ -145,6 +156,18 @@ def clickB(cx, xy):
     dd_dll.DD_btn(1)
     time.sleep(1 + botrandom())
     dd_dll.DD_btn(2)
+
+
+def cancelDialog(cx, xy):
+    #检查是否有对话框
+    res = checkimg(357 * 2, 44 * 2, 412 * 2, 75 * 2, "res2//paihang.png", False, 0)
+        if res is False:
+            cx = int(cx * grate)
+            xy = int(xy * grate)
+            move(cx, xy)
+            dd_dll.DD_btn(1)
+            time.sleep(1 + botrandom())
+            dd_dll.DD_btn(2)
 
 
 def clickA(cx, xy):
@@ -342,7 +365,7 @@ def waitsanjie():
             clickB(650*2, 339*2)
             isinit = 1
         else:
-            clickB(960 * 2, 141 * 2)
+            cancelDialog(960 * 2, 141 * 2)
             break
     return
 
@@ -359,7 +382,7 @@ def waitkeju():
             clickB(516*2, 417*2)
             isinit = 1
         else:
-            clickB(960 * 2, 151 * 2)
+            cancelDialog(960 * 2, 151 * 2)
             break
 
     return
@@ -421,7 +444,7 @@ def doingbangpai():
             cnt = 0
             res2 = checkitem(769 * 2, 663 * 2, 885 * 2, 699 * 2, target, 2, 0)
             if res2 is True:
-                clickB(927 * 2, 152 * 2)
+                cancelDialog(927 * 2, 152 * 2)
 
         #宝石购买
         target = [u'晌']
@@ -482,7 +505,7 @@ def doingbangpai():
             cnt = 0
             res2 = checkitem(746 * 2, 598 * 2, 863 * 2, 632 * 2, target, 3, 0)
             if res2 is True:
-                clickB(927*2,152*2)
+                cancelDialog(927*2,152*2)
 
         res = checkimg(578*2, 55*2, 623*2,82*2 , "res2//tianzhen.png", False, 0)
         if res is True:
@@ -532,7 +555,7 @@ def waitshimen():
             time.sleep(0.5)
             res2 = checkitem(768 * 2, 666 * 2, 880 * 2, 698 * 2, target, 2, 0)
             if res2 is True:
-                clickB(927 * 2, 152 * 2)
+                cancelDialog(927 * 2, 152 * 2)
 
         #hanghui
         target = [u'购', u'买']
@@ -541,7 +564,7 @@ def waitshimen():
             time.sleep(0.5)
             res2 = checkitem(769 * 2, 663 * 2, 885 * 2, 699 * 2, target, 2, 0)
             if res2 is True:
-                clickB(927 * 2, 152 * 2)
+                cancelDialog(927 * 2, 152 * 2)
 
         #chongwu
         target = [u'购', u'买']
@@ -839,7 +862,7 @@ def getactionlist(finishbaotu, finishyabiao, finishmijing, finishsanjie, finishk
         target = [u'活', u'动']
         res = checkitem(940, 227, 1123, 291, target, 1)
         if res is True:
-            clickB(1912, 272)
+            cancelDialog(1912, 272)
             time.sleep(1)
 
         clickB(629, 113)
@@ -958,7 +981,7 @@ def getactionlist(finishbaotu, finishyabiao, finishmijing, finishsanjie, finishk
                 target = [u'活', u'动']
                 res = checkitem(940, 227, 1123, 291, target, 1)
                 if res is True:
-                    clickB(1912, 272)
+                    cancelDialog(1912, 272)
                     time.sleep(1)
                 break
         else:
@@ -1028,13 +1051,13 @@ def checktabforUser(name):
                 target = list(name)
                 res2 = checkitem(140*2, 167*2, 413*2, 198*2, target, 9,0)
                 if res2 is True:
-                    clickB(924*2, 136*2)
+                    cancelDialog(924*2, 136*2)
                     findFlag = True
                     break
                 else:
-                    clickB(924 * 2, 136 * 2)
+                    cancelDialog(924 * 2, 136 * 2)
             else:
-                clickB(924 * 2, 136 * 2)
+                cancelDialog(924 * 2, 136 * 2)
         if findFlag is True:
             print("find exit break")
             break
