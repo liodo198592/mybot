@@ -62,7 +62,7 @@ def checkdialog():
             time.sleep(1)
 
 
-        target = [u'队', u'伍', u'沼',u'任', u'务']
+        target = [u'队', u'伍', u'沼',u'任', u'务',u'降', u'妖']
         res = checkitem(441*2, 113*2, 556*2, 142*2, target, 9,0)
         if res is True:
             cancelDialog(924*2, 134*2)
@@ -161,13 +161,13 @@ def clickB(cx, xy):
 def cancelDialog(cx, xy):
     #检查是否有对话框
     res = checkimg(357 * 2, 44 * 2, 412 * 2, 75 * 2, "res2//paihang.png", False, 0)
-        if res is False:
-            cx = int(cx * grate)
-            xy = int(xy * grate)
-            move(cx, xy)
-            dd_dll.DD_btn(1)
-            time.sleep(1 + botrandom())
-            dd_dll.DD_btn(2)
+    if res is False:
+        cx = int(cx * grate)
+        xy = int(xy * grate)
+        move(cx, xy)
+        dd_dll.DD_btn(1)
+        time.sleep(1 + botrandom())
+        dd_dll.DD_btn(2)
 
 
 def clickA(cx, xy):
