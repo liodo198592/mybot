@@ -40,17 +40,17 @@ def checkdialog(isNow = False):
 
         # teamview
         target = [u'确', u'定']
-        res2 = checkitem(879 * 2, 481 * 2, 927 * 2, 497 * 2, target, 1, 1)
+        res2 = checkitem(u'checkdialog 检查teamview',879 * 2, 481 * 2, 927 * 2, 497 * 2, target, 1, 1)
         if res2 is True:
             pass
 
         target = [u'取', u'消']
-        res = checkitem(359 * 2, 465 * 2, 474 * 2, 495 * 2, target, 6)
+        res = checkitem(u'checkdialog 检查取消',359 * 2, 465 * 2, 474 * 2, 495 * 2, target, 6)
         if res is True:
             print("checkdialog 取消")
 
         target = [u'福', u'利']
-        res = checkitem(462*2, 144*2, 575*2, 172*2, target, 1,0)
+        res = checkitem(u'checkdialog 检查福利',462*2, 144*2, 575*2, 172*2, target, 1,0)
         if res is True:
             cancelDialog(909*2, 163*2)
             time.sleep(1)
@@ -58,14 +58,14 @@ def checkdialog(isNow = False):
 
         #请组逞或加入队伍
         target = [u'请', u'组', u'建',u'或', u'加',u'入', u'队', u'伍']
-        res = checkitem(827*2, 319*2, 1007*2, 351*2, target, 9,0)
+        res = checkitem(u'checkdialog 检查是否队列界面',827*2, 319*2, 1007*2, 351*2, target, 9,0)
         if res is True:
             cancelDialog(863*2, 158*2)
             time.sleep(1)
 
 
         target = [u'队', u'伍', u'沼',u'任', u'务',u'降', u'妖']
-        res = checkitem(441*2, 113*2, 556*2, 142*2, target, 9,0)
+        res = checkitem(u'checkdialog 检查主界面',441*2, 113*2, 556*2, 142*2, target, 9,0)
         if res is True:
             cancelDialog(924*2, 134*2)
             time.sleep(1)
@@ -73,14 +73,14 @@ def checkdialog(isNow = False):
 
         #check shanggushenfu
         target = [u'激活', u'护符']
-        res = checkitem(430 * 2, 212 * 2, 603 * 2, 240 * 2, target, 1)
+        res = checkitem(u'checkdialog 检查激活护符',430 * 2, 212 * 2, 603 * 2, 240 * 2, target, 1)
         if res is True:
             clickB(764 * 2, 223 * 2)
             time.sleep(1)
 
         # check use
         target = [u'使', u'用']
-        res = checkitem(1618, 1290, 1817, 1381, target, 4, 1)
+        res = checkitem(u'checkdialog 检查使用道具',1618, 1290, 1817, 1381, target, 4, 1)
         if res is True:
             cnt = 0
 
@@ -203,7 +203,7 @@ def getText(x1, y1, x2, y2, key):
     return strtask
 
 
-def checkitem(x1, y1, x2, y2, strlist, key, times=1):
+def checkitem(desc, x1, y1, x2, y2, strlist, key, times=1):
     x1 = int(x1 * grate)
     y1 = int(y1 * grate)
     x2 = int(x2 * grate)
@@ -218,7 +218,7 @@ def checkitem(x1, y1, x2, y2, strlist, key, times=1):
         pass
     strtask = getstrfromimg(img, key)
     if strtask.strip() != "":
-        print("checkitem :" + strtask)
+        print("checkitem :" + strtask +" desc:" + desc)
     for substr in strlist:
         if substr in strtask:
             print(u'find: ' + str(substr) + u' in :' + str(strtask))
@@ -308,7 +308,7 @@ def waitbaotu():
     cnt = 0
     while True:
         target = [u'听', u'听',u'无', u'妨']
-        res = checkitem(1471, 1117, 1903, 1198, target, 1)
+        res = checkitem(u'宝图 检查接任务',1471, 1117, 1903, 1198, target, 1)
         if res is True:
             isinit = 1
 
@@ -362,7 +362,7 @@ def waitsanjie():
         checkdialog()
         time.sleep(1)
         target = [u'求', u'助']
-        res = checkitem(804*2, 497*2, 932*2, 528*2, target, 1,0)
+        res = checkitem(u'三界 检查求助',804*2, 497*2, 932*2, 528*2, target, 1,0)
         if res is True:
             clickB(650*2, 339*2)
             isinit = 1
@@ -379,7 +379,7 @@ def waitkeju():
         checkdialog()
         time.sleep(1)
         target = [u'求', u'助']
-        res = checkitem(794*2, 624*2, 906*2, 651*2, target, 1,0)
+        res = checkitem(u'check科举 检查求助',794*2, 624*2, 906*2, 651*2, target, 1,0)
         if res is True:
             clickB(516*2, 417*2)
             isinit = 1
@@ -440,72 +440,72 @@ def doingbangpai():
         #do task
         # hanghui
         target = [u'购', u'买']
-        res = checkitem(769 * 2, 663 * 2, 885 * 2, 699 * 2, target, 2, 1)
+        res = checkitem(u'check帮派 检查道具购买',769 * 2, 663 * 2, 885 * 2, 699 * 2, target, 2, 1)
         if res is True:
             time.sleep(0.5)
             cnt = 0
-            res2 = checkitem(769 * 2, 663 * 2, 885 * 2, 699 * 2, target, 2, 0)
+            res2 = checkitem(u'check帮派 再次检查购买',769 * 2, 663 * 2, 885 * 2, 699 * 2, target, 2, 0)
             if res2 is True:
                 cancelDialog(927 * 2, 152 * 2)
 
         #宝石购买
         target = [u'晌']
-        res = checkitem(718 * 2, 664 * 2, 859 * 2, 697 * 2, target, 8, 1)
+        res = checkitem(u'check帮派 检查宝石购买',718 * 2, 664 * 2, 859 * 2, 697 * 2, target, 8, 1)
         if res is True:
             cnt = 0
 
         target = [u'派任务']
-        res = checkitem(770 * 2, 443 * 2, 922 * 2, 471 * 2, target, 8, 1)
+        res = checkitem(u'check帮派 检查帮派任务1',770 * 2, 443 * 2, 922 * 2, 471 * 2, target, 8, 1)
         if res is True:
             cnt = 0
 
         target = [u'派任务']
-        res = checkitem(765 * 2, 561 * 2, 930 * 2, 590 * 2, target, 8, 1)
+        res = checkitem(u'check帮派 检查帮派任务2',765 * 2, 561 * 2, 930 * 2, 590 * 2, target, 8, 1)
         if res is True:
             cnt = 0
 
         target = [u'派任务']
-        res = checkitem(765 * 2, 261 * 2, 919 * 2, 293 * 2, target, 8, 1)
+        res = checkitem(u'check帮派 检查帮派任务3',765 * 2, 261 * 2, 919 * 2, 293 * 2, target, 8, 1)
         if res is True:
             cnt = 0
 
         target = [u'派任务']
-        res = checkitem(775 * 2, 380 * 2, 924 * 2, 409 * 2, target, 8, 1)
+        res = checkitem(u'check帮派 检查帮派任务4',775 * 2, 380 * 2, 924 * 2, 409 * 2, target, 8, 1)
         if res is True:
             cnt = 0
 
         target = [u'派任务']
-        res = checkitem(774 * 2, 320 * 2, 921 * 2, 352 * 2, target, 8, 1)
+        res = checkitem(u'check帮派 检查帮派任务5',774 * 2, 320 * 2, 921 * 2, 352 * 2, target, 8, 1)
         if res is True:
             cnt = 0
 
         target = [u'切',u'磋']
-        res = checkitem(769 * 2, 560 * 2, 924 * 2, 592 * 2, target, 8, 1)
+        res = checkitem(u'check帮派 检查切磋',769 * 2, 560 * 2, 924 * 2, 592 * 2, target, 8, 1)
         if res is True:
             cnt = 0
 
         target = [u'上', u'交']
-        res = checkitem(772 * 2, 601 * 2, 882 * 2, 629 * 2, target, 3, 2)
+        res = checkitem(u'check帮派 检查上交1',772 * 2, 601 * 2, 882 * 2, 629 * 2, target, 3, 2)
         if res is True:
             break
 
         target = [u'上', u'交']
-        res = checkitem(1244, 1183, 1548, 1268, target, 3, 2)
+        res = checkitem(u'check帮派 检查上交2',1244, 1183, 1548, 1268, target, 3, 2)
         if res is True:
             break
 
         # check use
         target = [u'使', u'用']
-        res = checkitem(1618, 1290, 1817, 1381, target, 4, 1)
+        res = checkitem(u'check帮派 检查使用',1618, 1290, 1817, 1381, target, 4, 1)
         if res is True:
             break
 
         target = [u'购', u'买']
-        res = checkitem(746 * 2, 598 * 2, 863 * 2, 632 * 2, target, 3, 1)
+        res = checkitem(u'check帮派 检查购买',746 * 2, 598 * 2, 863 * 2, 632 * 2, target, 3, 1)
         if res is True:
             time.sleep(0.5)
             cnt = 0
-            res2 = checkitem(746 * 2, 598 * 2, 863 * 2, 632 * 2, target, 3, 0)
+            res2 = checkitem(u'check帮派 检查购买2',746 * 2, 598 * 2, 863 * 2, 632 * 2, target, 3, 0)
             if res2 is True:
                 cancelDialog(927*2,152*2)
 
@@ -528,7 +528,7 @@ def doingbangpai():
         time.sleep(1)
 
         target = [u'领', u'取']
-        res = checkitem(750 * 2, 499 * 2, 939 * 2, 530 * 2, target, 1, 1)
+        res = checkitem(u'check帮派 检查领取',750 * 2, 499 * 2, 939 * 2, 530 * 2, target, 1, 1)
         if res is True:
             cnt = 0
     return
@@ -545,63 +545,63 @@ def waitshimen():
 
         #check use
         target = [u'使',u'用']
-        res = checkitem(1618,1290,1817,1381,target, 4,1)
+        res = checkitem(u'check师门 检查使用',1618,1290,1817,1381,target, 4,1)
         if res is True:
             break
 
         #check buy daoju
 
         target = [u'购', u'买']
-        res = checkitem(768*2, 666*2, 880*2, 698*2, target, 2, 1)
+        res = checkitem(u'check师门 检查 购买',768*2, 666*2, 880*2, 698*2, target, 2, 1)
         if res is True:
             time.sleep(0.5)
-            res2 = checkitem(768 * 2, 666 * 2, 880 * 2, 698 * 2, target, 2, 0)
+            res2 = checkitem(u'check师门 检查购买2',768 * 2, 666 * 2, 880 * 2, 698 * 2, target, 2, 0)
             if res2 is True:
                 cancelDialog(927 * 2, 152 * 2)
 
         #hanghui
         target = [u'购', u'买']
-        res = checkitem(769 * 2, 663 * 2, 885 * 2, 699 * 2, target, 2,1)
+        res = checkitem(u'check师门 检查行会',769 * 2, 663 * 2, 885 * 2, 699 * 2, target, 2,1)
         if res is True:
             time.sleep(0.5)
-            res2 = checkitem(769 * 2, 663 * 2, 885 * 2, 699 * 2, target, 2, 0)
+            res2 = checkitem(u'check师门 检查行会2',769 * 2, 663 * 2, 885 * 2, 699 * 2, target, 2, 0)
             if res2 is True:
                 cancelDialog(927 * 2, 152 * 2)
 
         #chongwu
         target = [u'购', u'买']
-        res = checkitem(1553, 1290, 1900, 1383, target, 2,1)
+        res = checkitem(u'check师门 检查宠物购买',1553, 1290, 1900, 1383, target, 2,1)
 
 
         target = [u'购', u'买']
-        res = checkitem(752 * 2, 599 * 2, 862 * 2, 632 * 2, target, 4,1)
+        res = checkitem(u'check师门 其他购买',752 * 2, 599 * 2, 862 * 2, 632 * 2, target, 4,1)
         if res is True:
             print("check buy teshusshimen success")
 
 
         target = [u'上', u'交']
-        res = checkitem(772*2, 601*2, 882*2, 629*2, target, 3,1)
+        res = checkitem(u'check师门 检查上交',772*2, 601*2, 882*2, 629*2, target, 3,1)
         if res is True:
             break
 
         target = [u'上', u'交']
-        res = checkitem(1244, 1183, 1548, 1268, target, 3,1)
+        res = checkitem(u'check师门 检查上交2',1244, 1183, 1548, 1268, target, 3,1)
         if res is True:
             break
 
         target = [u'额', u'外']
-        checkitem(752*2, 318*2, 944*2, 351*2, target, 1,1)
+        checkitem(u'check师门 检查额外',752*2, 318*2, 944*2, 351*2, target, 1,1)
 
 
         target = [u'额', u'外']
-        checkitem(752 * 2, 500 * 2, 944 * 2, 533 * 2, target, 1,1)
+        checkitem(u'check师门 检查额外2',752 * 2, 500 * 2, 944 * 2, 533 * 2, target, 1,1)
 
         target = [u'抽', u'奖']
-        checkitem(468 * 2, 324 * 2, 544 * 2, 367 * 2, target, 2,1)
+        checkitem(u'check师门 检查抽奖',468 * 2, 324 * 2, 544 * 2, 367 * 2, target, 2,1)
 
 
         target = [u'我', u'要', u'收', u'服', u'了', u'你', u'进', u'入', u'战', u'斗']
-        res = checkitem(1445, 1100, 1950, 1192, target, 1,1)
+        res = checkitem(u'check师门 进入战斗',1445, 1100, 1950, 1192, target, 1,1)
         if res is True:
             print("进入战斗")
             falsecount = 0
@@ -646,7 +646,7 @@ def checktaskmijing():
 
     print(x1, y1, x2, y2)
     target = [u'秘', u'境', u'降', u'妖', u'第', u'关', u'挑', u'战']
-    res = checkitem(x1, y1, x2, y2, target, 1)
+    res = checkitem(u'check秘境 接任务',x1, y1, x2, y2, target, 1)
     if res is True:
         return True
     return False
@@ -663,7 +663,7 @@ def checktaskbaotu(index):
 
     print(x1, y1, x2, y2, index)
     target = [u'宝', u'图', u'任', u'务', u'前', u'往', u'战', u'胜']
-    res = checkitem(x1, y1, x2, y2, target, 1)
+    res = checkitem(u'check宝图 任务列表',x1, y1, x2, y2, target, 1)
     if res is True:
         return index
     return 0
@@ -680,7 +680,7 @@ def checktaskbangpai(index):
     y2 = 377 + index * 160
 
     target = [u'青龙堂']
-    res = checkitem(98 * 2, 751 * 2, 251 * 2, 775 * 2, target, 1, 0)
+    res = checkitemu(u'check帮派 任务对话框',98 * 2, 751 * 2, 251 * 2, 775 * 2, target, 1, 0)
     if res is True:
         nextkey = 2
     else:
@@ -688,7 +688,7 @@ def checktaskbangpai(index):
 
     print(x1, y1, x2, y2, index)
     target = [u'青', u'龙', u'白', u'朱', u'雀', u'玄', u'武']
-    res = checkitem(x1, y1, x2, y2, target, 1,nextkey)
+    res = checkitem(u'check帮派 任务列表',x1, y1, x2, y2, target, 1,nextkey)
     if res is True:
         doingbangpai()
         return index
@@ -707,7 +707,7 @@ def checktask(index):
 
     print(x1, y1, x2, y2, index)
     target = [u'门', u'巡', u'逻', u'购', u'买', u'战', u'胜', u'强', u'盗', u'去', u'采', u'集', u'收', u'服', u'的']
-    res = checkitem(x1, y1, x2, y2, target, 1)
+    res = checkitem(u'check师门 任务列表',x1, y1, x2, y2, target, 1)
     if res is True:
         waitshimen()
         return index
@@ -757,18 +757,18 @@ def waitmijing():
 
         # check use
         target = [u'秘', u'境',u'降', u'妖']
-        res = checkitem(1462, 871, 1875, 938, target, 1,1)
+        res = checkitem(u'check秘境 接任务',1462, 871, 1875, 938, target, 1,1)
         if res is True:
             time.sleep(1)
             target = [u'狱', u'法']
-            res2 = checkitem(707*2, 174*2, 888*2, 209*2, target, 9, 0)
+            res2 = checkitem(u'check秘境 秘境类型',707*2, 174*2, 888*2, 209*2, target, 9, 0)
             if res2 is True:
                 clickA(414, 777)
                 botrandom()
                 clickA(1093, 1099)
             else:
                 target = [u'池', u'仙']
-                res3 = checkitem(707 * 2, 174 * 2, 888 * 2, 209 * 2, target, 9, 0)
+                res3 = checkitem(u'check秘境 接任务2',707 * 2, 174 * 2, 888 * 2, 209 * 2, target, 9, 0)
                 if res3 is True:
                     clickA(225*2, 358*2)
                     botrandom()
@@ -777,7 +777,7 @@ def waitmijing():
 
 
         target = [u'点', u'击', u'空', u'白', u'处', u'返', u'回', u'主',u'界', u'面']
-        res = checkitem(774, 1175, 1212, 1228, target, 7)
+        res = checkitem(u'check秘境 判断死亡',774, 1175, 1212, 1228, target, 7)
         if res is True:
             clickA(1917, 729)
             clickA(1917, 729)
@@ -790,7 +790,7 @@ def waitmijing():
             cnt = 0
 
         target = [u'进', u'入', u'战', u'斗']
-        res = checkitem(1543, 996, 1849, 1056, target, 1)
+        res = checkitem(u'check秘境 进入战斗',1543, 996, 1849, 1056, target, 1)
         if res is True:
             print("进入战斗")
             falsecount = 0
@@ -822,7 +822,7 @@ def waitmijing():
 
 
 def waityabiao():
-    print("wait waitmijing")
+    print("wait waityabiao")
     cnt = 0
     while True:
         cnt = cnt + 1
@@ -830,10 +830,10 @@ def waityabiao():
         if cnt > 10:
             break
 
-        res = checkimg(357*2, 44*2, 412*2, 75*2, "res2//paihang.png", False, 0)
+        res = checkimg(u'check押镖 押镖任务',357*2, 44*2, 412*2, 75*2, "res2//paihang.png", False, 0)
         if res is True:
             target = [u'押', u'送', u'普', u'通', u'镖', u'银']
-            res2 = checkitem(1497, 990, 1885, 1061, target, 1)
+            res2 = checkitem(u'check押镖 普通镖',1497, 990, 1885, 1061, target, 1)
             if res2 is True:
                 print("开始押镖")
                 cnt = 0
@@ -842,7 +842,7 @@ def waityabiao():
             print("押镖中")
 
         target = [u'确', u'定']
-        checkitem(1105, 893, 1321, 960, target, 1)
+        checkitem(u'check押镖 确定',1105, 893, 1321, 960, target, 1)
 
         checkdialog()
         time.sleep(1)
@@ -862,7 +862,7 @@ def getactionlist(finishbaotu, finishyabiao, finishmijing, finishsanjie, finishk
         checkdialog()
 
         target = [u'活', u'动']
-        res = checkitem(940, 227, 1123, 291, target, 1)
+        res = checkitem(u'ACTION 活动',940, 227, 1123, 291, target, 1)
         if res is True:
             cancelDialog(1912, 272)
             time.sleep(1)
@@ -870,7 +870,7 @@ def getactionlist(finishbaotu, finishyabiao, finishmijing, finishsanjie, finishk
         clickB(629, 113)
         while True:
             target = [u'活', u'动']
-            res = checkitem(940, 227, 1123, 291, target, 1)
+            res = checkitem(u'ACTION 活动2',940, 227, 1123, 291, target, 1)
             if res is True:
                 clickA(141*2, 210*2)
                 time.sleep(0.3*botrandom())
@@ -981,7 +981,7 @@ def getactionlist(finishbaotu, finishyabiao, finishmijing, finishsanjie, finishk
             print("noactioncnt :" + str(noactioncnt))
             if noactioncnt > 3:
                 target = [u'活', u'动']
-                res = checkitem(940, 227, 1123, 291, target, 1)
+                res = checkitem(u'ACTION 活动3',940, 227, 1123, 291, target, 1)
                 if res is True:
                     cancelDialog(1912, 272)
                     time.sleep(1)
@@ -1006,7 +1006,7 @@ def checkbag():
         time.sleep(1)
         while True:
             target = [u'没', u'有',u'可', u'以']
-            res2 = checkitem(331*2, 424*2, 541*2, 456*2, target, 9,0)
+            res2 = checkitem(u'背包 没有可以',331*2, 424*2, 541*2, 456*2, target, 9,0)
             if res2 is False:
                 clickB(152*2,289*2)
                 time.sleep(1)
@@ -1072,19 +1072,19 @@ def checktabforUser(name):
             time.sleep(1)
 
             target = [u'重', u'连', u'失', u'败', u'请', u'重', u'新', u'登', u'录']
-            res = checkitem(392 * 2, 374 * 2, 632 * 2, 410 * 2, target, 9, 0)
+            res = checkitem(u'切换用户 失败重连',392 * 2, 374 * 2, 632 * 2, 410 * 2, target, 9, 0)
             if res is True:
                 clickA(517 * 2, 475 * 2)
                 while True:
                     time.sleep(1)
                     target = [u'佳', u'人', u'如']
-                    res2 = checkitem(392 * 2, 374 * 2, 632 * 2, 410 * 2, target, 9, 0)
+                    res2 = checkitem(u'切换用户 服务器名',392 * 2, 374 * 2, 632 * 2, 410 * 2, target, 9, 0)
                     if res2 is True:
                         clickA(510 * 2, 567 * 2)
                         break;
                 target = [u'取', u'消']
                 time.sleep(10)
-                res3 = checkitem(357 * 2, 466 * 2, 477 * 2, 495 * 2, target, 9, 0)
+                res3 = checkitem(u'切换用户 取消',357 * 2, 466 * 2, 477 * 2, 495 * 2, target, 9, 0)
                 if res3 is True:
                     clickB(414 * 2, 478 * 2)
                 time.sleep(1)
@@ -1126,7 +1126,7 @@ def waitwabao():
 
         # check use
         target = [u'使', u'用']
-        res = checkitem(1618, 1290, 1817, 1381, target, 4, 1)
+        res = checkitem(u'挖宝 使用',1618, 1290, 1817, 1381, target, 4, 1)
         if res is True:
             cnt = 0
 
