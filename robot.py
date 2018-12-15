@@ -29,9 +29,11 @@ grate = 0.5
 g_lasttime = 0
 
 
-def checkdialog():
+def checkdialog(isNow = False):
     global g_lasttime
-    if(time.time() - g_lasttime) > 40:
+    if isNow is False and (time.time() - g_lasttime) < 40:
+        pass
+    else:
         # check dialog
         print("check dialog")
         g_lasttime = time.time()
@@ -1068,6 +1070,28 @@ def checktabforUser(name):
                 print (" locatewindow.relocatewindow() error")
                 pass
             time.sleep(1)
+
+            target = [u'重', u'连', u'失', u'败', u'请', u'重', u'新', u'登', u'录']
+            res = checkitem(392 * 2, 374 * 2, 632 * 2, 410 * 2, target, 9, 0)
+            if res is True:
+                clickA(517 * 2, 475 * 2)
+                while True:
+                    time.sleep(1)
+                    target = [u'佳', u'人', u'如']
+                    res2 = checkitem(392 * 2, 374 * 2, 632 * 2, 410 * 2, target, 9, 0)
+                    if res2 is True:
+                        clickA(510 * 2, 567 * 2)
+                        break;
+                target = [u'取', u'消']
+                time.sleep(10)
+                res3 = checkitem(357 * 2, 466 * 2, 477 * 2, 495 * 2, target, 9, 0)
+                if res3 is True:
+                    clickB(414 * 2, 478 * 2)
+                time.sleep(1)
+                for i in range(0,3):
+                    checkdialog(True)
+
+
             #确认主界面
             res = checkimg(357 * 2, 44 * 2, 412 * 2, 75 * 2, "res2//paihang.png", False, 0)
             if res is True:
