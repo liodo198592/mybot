@@ -212,26 +212,25 @@ def checkitem(desc, x1, y1, x2, y2, strlist, key, times=1):
     try:
         img = ImageGrab.grab(bbox=(x1, y1, x2, y2))
         img.save("out.png")
+        strtask = getstrfromimg(img, key)
     except IOError:
         print("IO ImageGrab.grab ERROR")
     else:
-        pass
-    strtask = getstrfromimg(img, key)
-    if strtask.strip() != "":
-        print("checkitem :" + strtask +" desc:" + desc)
-    for substr in strlist:
-        if substr in strtask:
-            print(u'find: ' + str(substr) + u' in :' + str(strtask))
-            move((x1 + x2) / 2, (y1 + y2) / 2)
-            if times >= 1:
-                dd_dll.DD_btn(1)
-                time.sleep(1+ botrandom())
-                dd_dll.DD_btn(2)
-            if times >= 2:
-                dd_dll.DD_btn(1)
-                time.sleep(1+botrandom())
-                dd_dll.DD_btn(2)
-            return True
+        if strtask.strip() != "":
+            print("checkitem :" + strtask +" desc:" + desc)
+        for substr in strlist:
+            if substr in strtask:
+                print(u'find: ' + str(substr) + u' in :' + str(strtask))
+                move((x1 + x2) / 2, (y1 + y2) / 2)
+                if times >= 1:
+                    dd_dll.DD_btn(1)
+                    time.sleep(1+ botrandom())
+                    dd_dll.DD_btn(2)
+                if times >= 2:
+                    dd_dll.DD_btn(1)
+                    time.sleep(1+botrandom())
+                    dd_dll.DD_btn(2)
+                return True
     return False
 
 def getstrfromimg(img, key):
@@ -830,7 +829,7 @@ def waityabiao():
         if cnt > 10:
             break
 
-        res = checkimg(u'check押镖 押镖任务',357*2, 44*2, 412*2, 75*2, "res2//paihang.png", False, 0)
+        res = checkimg(357*2, 44*2, 412*2, 75*2, "res2//paihang.png", False, 0)
         if res is True:
             target = [u'押', u'送', u'普', u'通', u'镖', u'银']
             res2 = checkitem(u'check押镖 普通镖',1497, 990, 1885, 1061, target, 1)
@@ -1098,7 +1097,7 @@ def checktabforUser(name):
                 clickA(982*2,77*2)
                 time.sleep(1)
                 target = list(name)
-                res2 = checkitem(140*2, 167*2, 413*2, 198*2, target, 9,0)
+                res2 = checkitem(u'切换用户 确认名字',140*2, 167*2, 413*2, 198*2, target, 9,0)
                 if res2 is True:
                     cancelDialog(924*2, 136*2)
                     findFlag = True

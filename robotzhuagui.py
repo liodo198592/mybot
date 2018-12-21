@@ -170,26 +170,25 @@ def checkitem(x1, y1, x2, y2, strlist, key, times=1):
     try:
         img = ImageGrab.grab(bbox=(x1, y1, x2, y2))
         img.save("out.png")
+        strtask = getstrfromimg(img, key)
     except IOError:
         print("IO ImageGrab.grab ERROR")
     else:
-        pass
-    strtask = getstrfromimg(img, key)
-    if strtask.strip() != "":
-        print("checkitem :" + strtask)
-    for substr in strlist:
-        if substr in strtask:
-            print(u'find: ' + str(substr) + u' in :' + str(strtask))
-            move((x1 + x2) / 2, (y1 + y2) / 2)
-            if times >= 1:
-                dd_dll.DD_btn(1)
-                time.sleep(1 + botrandom())
-                dd_dll.DD_btn(2)
-            if times >= 2:
-                dd_dll.DD_btn(1)
-                time.sleep(1 + botrandom())
-                dd_dll.DD_btn(2)
-            return True
+        if strtask.strip() != "":
+            print("checkitem :" + strtask)
+        for substr in strlist:
+            if substr in strtask:
+                print(u'find: ' + str(substr) + u' in :' + str(strtask))
+                move((x1 + x2) / 2, (y1 + y2) / 2)
+                if times >= 1:
+                    dd_dll.DD_btn(1)
+                    time.sleep(1 + botrandom())
+                    dd_dll.DD_btn(2)
+                if times >= 2:
+                    dd_dll.DD_btn(1)
+                    time.sleep(1 + botrandom())
+                    dd_dll.DD_btn(2)
+                return True
     return False
 
 def clickB(cx, xy):
